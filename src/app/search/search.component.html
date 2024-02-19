@@ -1,0 +1,16 @@
+<div>
+    <form class="flex gap-3">
+        <input type="text" class="w-[350px] rounded-md" name="rechercheElement" [(ngModel)]="recherche" (ngModelChange)="onChangeEmit($event)">
+      
+        <!-- <input type="text" class="w-[350px] rounded-md" name="rechercheElement" [(ngModel)]="recherche" (ngModelChange)="onChangeEmit($event)">
+       -->
+        <!-- <button type="submit" for="rechercheAlbum" class="bg-blue-400 px-4 py-2 rounded-lg hover:bg-blue-900 hover:text-white">Recherche</button> -->
+        <button type="button" for="rechercheAlbum" class="bg-white px-4 border-black py-2 rounded-lg hover:bg-blue-900 hover:text-white">Rafraîchir</button>
+    </form>
+    <!-- <form class="flex gap-3" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+        <input type="text" class="w-[350px] rounded-md" name="rechercheElement" [(ngModel)]="recherche" (ngModelChange)="onChangeEmit($event)" >
+      
+        <button type="submit" for="rechercheAlbum" class="bg-blue-400 px-4 py-2 rounded-lg hover:bg-blue-900 hover:text-white">Recherche</button>
+        <button type="button" for="rechercheAlbum" class="bg-white px-4 border-black py-2 rounded-lg hover:bg-blue-900 hover:text-white">Rafraîchir</button>
+    </form> -->
+</div>

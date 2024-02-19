@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply max-w-[1200px] mx-auto bg-gray-100 px-2 md:px-4
+    }
+
+    .input {
+        @apply bg-gray-100 py-2 pl-8 focus:outline-blue-500 placeholder:italic
+    }
+}
+

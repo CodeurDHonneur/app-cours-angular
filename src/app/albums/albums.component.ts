@@ -11,11 +11,12 @@ import { AlbumService } from '../album.service';
 
 export class AlbumsComponent implements OnInit {
   title: string = "Page principale Album Music";
-  albums?: Album[];
+  albums!: Album[];
   idAlbum? : string;
   album?: Album;
   idalbumPlay?: string;
-
+  p: number = 1;
+  
   constructor(private albumService: AlbumService){}
 
   ngOnInit(): void {

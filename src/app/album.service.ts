@@ -26,4 +26,13 @@ export class AlbumService {
   submiteFormConnexion(nameOrEmail: string, password: string){
     console.log(`Le nom d'utilisateur ou l'email suivant ${nameOrEmail} a le mot de passe suivant ${password}`)
   }
+
+  submitFormInscription(
+    userName: string,
+    email: string,
+    pass: string,
+    passConfirm: string,
+  ){
+    console.log(`Notre nouvel utilisateur a les informations suivantes : nom => ${userName}, email => ${email}, mot de pase => ${pass}, pour confirmation => ${passConfirm}`)
+  }
 }

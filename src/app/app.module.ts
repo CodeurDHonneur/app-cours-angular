@@ -14,7 +14,7 @@ import { SearchComponent } from './search/search.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationAucunResultatComponent } from './notification-aucun-resultat/notification-aucun-resultat.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     MatIconModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

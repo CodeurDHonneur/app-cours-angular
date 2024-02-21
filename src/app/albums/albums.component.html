@@ -12,12 +12,12 @@
 
       <!-- Pagination -->
       <div class="text-center pt-4">   
-        <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 
     <div class=" space-y-10 max-w-[700px] mx-auto">
         <!-- <article *ngFor="let album of albums | paginate: {itemsPerPage: 4, currentPage: p}" class=" border px-2 py-4 space-y-5 bg-white shadow-lg rounded-xl"> -->
-        <article  *ngFor="let album of albums" class=" border px-2 py-4 space-y-5 bg-white shadow-lg rounded-xl">
+        <article  *ngFor="let album of albums | paginate: {itemsPerPage: 4, currentPage: p}" class=" border px-2 py-4 space-y-5 bg-white shadow-lg rounded-xl">
         <!-- <article *ngFor="let album of albums" class=" border px-2 py-4 space-y-5 bg-white shadow-lg rounded-xl"> -->
             <p class="bg-blue-600 py-4 pl-6 text-emerald-200 text-2xl rounded-lg">{{album.ref}}</p>
             <!-- <h2><a class="text-3xl font-bold hover:border-b-black" routerLink="description/{{album.id}}" (click)="sendId(album.id)">{{album.title}}</a></h2> -->

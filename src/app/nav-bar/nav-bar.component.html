@@ -1,22 +1,31 @@
 <div class="flex justify-between bg-blue-600 flex-wrap p-2">
     <div class="flex gap-2 flex-wrap mb-4">
         <div class="flex gap-1">
-            <img src="../../assets/img/logo/logo-2.jpg" class="w-6 rounded-full border" alt="">
-            <a routerLink="/">ZikMound</a>
+            <a routerLink="/" class="text-white">ZikMound</a>
         </div>
         <nav>
             <ul class="flex gap-4 flex-wrap ">
-                <li><a class="px-4 py-2 border hover:bg-black hover:text-white rounded-md"routerLink="/">Accueil</a></li>
-                <li><a class="px-4 py-2 border hover:bg-black hover:text-white rounded-md"routerLink="connexion">Connexion</a></li>
-                <li><a class="px-4 py-2 border hover:bg-black hover:text-white rounded-md"routerLink="">Déconnexion</a></li>
+                <li><a class="px-4 py-2 border text-white hover:bg-black hover:text-white rounded-md"  routerLink="/" routerLinkActive="active">Accueil</a></li>
+                <li><a class="px-4 py-2 border text-white hover:bg-black hover:text-white rounded-md" routerLink="connexion"  routerLinkActive="active">Connexion</a></li>
             </ul>
         </nav>
     </div>
     <div class="flex  gap-2 flex-wrap">
         <div class="flex gap-1">
-            <img src="../../assets/img/avatar/avatar-1.png" class="w-6 h-6 rounded-full border" alt="">
-            <p class="">Nom d'utilisateur</p>
+            <p class="text-white" >Nom d'utilisateur</p>
         </div>
-        <p>Timer</p>
+        <p class="text-white">Timer</p>
     </div>
 </div>
+<div>
+    <mat-icon>
+        search
+    </mat-icon>
+    <div>Travailler à mettre une animation pour un affichage au besoin de la barre de recherche</div>
+    <div>le détail et la barre de lecture doivent aussi être liées à des animations</div>
+</div>
+<button (click)="toggle()">
+    toggle
+</button>
+
+<div [@openclose]="isOpen ? 'open' : 'closed'">Box is {{isOpen ? 'open' : 'closed'}}</div>

@@ -16,7 +16,8 @@ export class AlbumsComponent implements OnInit {
   album?: Album;
   idalbumPlay?: string;
   p: number = 1;
-  
+  play = false;
+
   constructor(private albumService: AlbumService){}
 
   ngOnInit(): void {
@@ -27,8 +28,11 @@ export class AlbumsComponent implements OnInit {
     return this.album = this.albumService.getAlbumSelected(id);
   }
 
-  playParent(event: string){
-    this.idalbumPlay = event;
+  playParent(event: Album){
+    this.idalbumPlay = event.id;
+    this.play = true;
+    this.album = event;
+    this.albumService.switchOn(event)
   }
 
   valeurDeRecherche(valeurEmit: string): Album[]{

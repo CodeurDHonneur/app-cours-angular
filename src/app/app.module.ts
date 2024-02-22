@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationAucunResultatComponent } from './notification-aucun-resultat/notification-aucun-resultat.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DescriptionComponent,
     SearchComponent,
     NotificationAucunResultatComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,

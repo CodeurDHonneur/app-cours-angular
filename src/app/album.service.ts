@@ -1,25 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Album } from './album';
 import { ALBUMS } from './mock-albums';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AlbumService {
   albums: Album[] = ALBUMS;
   album?: Album;
+
+  private albumsListUrl = 'https://console.firebase.google.com/project/music-5c6af/database/music-5c6af-default-rtdb/data/~2F/albumLists';
+  private albumsUrl = 'https://console.firebase.google.com/project/music-5c6af/database/music-5c6af-default-rtdb/data/~2F/albums';
   subjectAlbum = new Subject<Album>();
   subjectAlbums = new Subject<Album[]>();
 
-
-  constructor() { }
-
-  getAlbum(): Album[] {
-    
-    return this.albums;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    })
   }
 
+  constructor(private http: HttpClient) { }
+
+  // getAlbum(): Album[] {
+    
+  //   return this.albums;
+  // }
+
+  getalbums(): Observable<Album[]> {
+    return this.http.get<Album[]>(this.albumsUrl + '/.json', this.httpOptions).pipe(
+      map(albums => _.values(albums)),
+      map(albums => {
+        return albums.sort(
+          (a, b) => {return b.duration - a.duration}
+        )
+      })
+    )
+  }
   getAlbumSelected(id?: string): Album | undefined{
     this.album = this.albums.find(item => item.id == id);
     if(this.album) this.subjectAlbum.next(this.album);

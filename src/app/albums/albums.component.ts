@@ -21,7 +21,7 @@ export class AlbumsComponent implements OnInit {
   constructor(private albumService: AlbumService){}
 
   ngOnInit(): void {
-    this.albums = this.albumService.getAlbum();
+    this.albumService.getalbums.subscribe(albums => this.albums = albums);
   }
 
   onSelect(id: string): Album | undefined{

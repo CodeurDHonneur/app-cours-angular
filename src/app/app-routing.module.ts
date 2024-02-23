@@ -22,7 +22,7 @@ const routes: Routes = [
     
   },
   {
-    path: "connexion/inscription",
+    path: "inscription",
     component: InscriptionComponent,
     
   },

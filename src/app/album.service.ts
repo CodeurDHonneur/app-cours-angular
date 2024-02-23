@@ -15,8 +15,9 @@ export class AlbumService {
   albums: Album[] = ALBUMS;
   album?: Album;
 
-  private albumsListUrl = 'https://console.firebase.google.com/project/music-5c6af/database/music-5c6af-default-rtdb/data/~2F/albumLists';
-  private albumsUrl = 'https://console.firebase.google.com/project/music-5c6af/database/music-5c6af-default-rtdb/data/~2F/albums';
+  private albumsListUrl = 'https://music-5c6af-default-rtdb.europe-west1.firebasedatabase.app/albumLists';
+  private albumsUrl = 'https://music-5c6af-default-rtdb.europe-west1.firebasedatabase.app/albums';
+  
   subjectAlbum = new Subject<Album>();
   subjectAlbums = new Subject<Album[]>();
 
@@ -28,13 +29,10 @@ export class AlbumService {
 
   constructor(private http: HttpClient) { }
 
-  // getAlbum(): Album[] {
-    
-  //   return this.albums;
-  // }
-
   getalbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(this.albumsUrl + '/.json', this.httpOptions).pipe(
+
+    return this.http.get<Album[]>(this.albumsUrl + '/.json', this.httpOptions)
+    .pipe(
       map(albums => _.values(albums)),
       map(albums => {
         return albums.sort(
@@ -43,12 +41,20 @@ export class AlbumService {
       })
     )
   }
-  getAlbumSelected(id?: string): Album | undefined{
-    this.album = this.albums.find(item => item.id == id);
-    if(this.album) this.subjectAlbum.next(this.album);
-    
-    return this.album;
+
+  getAlbumSelected(id: string): Observable<Album>{
+    return this.http.get<Album>(this.albumsUrl + `/${id}/.json`)
+    .pipe(
+      map(album => album)
+    );
   }
+
+  // getAlbumSelected(id?: string): Album | undefined{
+  //   this.album = this.albums.find(item => item.id == id);
+  //   if(this.album) this.subjectAlbum.next(this.album);
+    
+  //   return this.album;
+  // }
 
   getResultatRecherche(value: string): Album[]{
     return this.albums.filter(item => item?.title.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
@@ -70,10 +76,30 @@ export class AlbumService {
 
   switchOff(album: Album): void {
     album.status = 'off';
+
+    this.http.put<void>(this.albumsUrl + `/${album.id}/.json`, album).subscribe(
+      e => e,
+      error => console.warn(error),
+      () => {
+        this.subjectAlbum.next(album);
+      }
+    )
   }
     
+  // switchOn(album: Album): void {
+  //   album.status = 'on';
+  // }
+
   switchOn(album: Album): void {
     album.status = 'on';
+    
+    this.http.put<void>(this.albumsUrl + `/${album.id}/.json`, album).subscribe(
+      e => e,
+      error => console.warn(error),
+      () => {
+        this.subjectAlbum.next(album);
+      }
+    )
   }
 }
 

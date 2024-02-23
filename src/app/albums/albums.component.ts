@@ -21,11 +21,12 @@ export class AlbumsComponent implements OnInit {
   constructor(private albumService: AlbumService){}
 
   ngOnInit(): void {
-    this.albumService.getalbums.subscribe(albums => this.albums = albums);
+    this.albumService.getalbums().subscribe(albums =>  this.albums = albums);
   }
 
-  onSelect(id: string): Album | undefined{
-    return this.album = this.albumService.getAlbumSelected(id);
+  onSelect(id?: string): void{
+    if (id)
+     this.albumService.getAlbumSelected(id).subscribe(album => this.album = album);
   }
 
   playParent(event: Album){

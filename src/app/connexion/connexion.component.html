@@ -1,13 +1,14 @@
 <form action="" class="max-w-[500px] mx-auto bg-white shadow-lg mt-6 px-4 py-12 rounded-lg" [formGroup]="fomrConnect" (submit)="submitFormConnect()">
     <h1 class="uppercase text-5xl font-bold mb-10 text-center bg-gradient-to-r from-yellow-300 to-red-500 bg-clip-text text-transparent font-serif">Se connecter</h1>
     <div class="space-y-4">
+        <div *ngIf="message" class="text-red-600 text-center">{{message | uppercase}}</div>
         <div class="flex flex-col">
             <label for="">Nom d'utilisateur ou Adresse mail</label>
-            <input type="text" placeholder="Nom d'utilisateur ou adresse mail" class="input" formControlName="nameOrEmail">
+            <input type="text" placeholder="Nom d'utilisateur ou adresse mail" class="input" formControlName="nameOrEmail" required>
         </div>
         <div class="flex flex-col">
             <label for="">Mot de passe</label>
-            <input type="text" placeholder="Mot de passe" class="input" formControlName="password">
+            <input type="password" placeholder="Mot de passe" class="input" formControlName="password" required>
         </div>
         <div class="flex items-center justify-center gap-4">
             <button type="submit" class="border px-4 py-2 rounded-lg bg-blue-300 hover:text-white hover:bg-green-400" type="submit" >Connexion</button>

@@ -12,8 +12,8 @@ import { AuthServiceService } from '../auth-service.service';
 })
 
 export class ConnexionComponent implements OnInit {
-  usersList?: UserLists[];
-
+  usersList!: UserLists[];
+  message: string = "";
 
   fomrConnect = new FormGroup({
     nameOrEmail: new FormControl(''),
@@ -25,27 +25,47 @@ export class ConnexionComponent implements OnInit {
     private authService: AuthServiceService,
     private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.authService.getUsers().subscribe(users => this.usersList = users);
+  }
 
   submitFormConnect() {
-
-    this.authService.getUsers().subscribe(users => this.usersList = users);
-
+    this.message = "";
     const nameOrEmail = this.fomrConnect.value.nameOrEmail;
     const password = this.fomrConnect.value.password;
 
-    const searchUser: UserLists | undefined = this.usersList?.find(
-      users => (
-        users.name === nameOrEmail
-        || users.email === nameOrEmail
-      )
-        && users.password === password)
-
-        if(searchUser == undefined){
+    if(nameOrEmail && password) {
+      const length = this.usersList?.length;
+      let bool = false;
+  
+      if(length){
+  
+        for(let i = 0; i < length; i++){
+          
+          let searchUser = this.usersList?.find(
+            users => (
+              users.name === nameOrEmail
+              || users.email === nameOrEmail
+            )
+              && users.password === password)
+              console.log(searchUser)
+            
+              if (searchUser) bool = true;
+        }
+  
+        if(!bool){
           this.router.navigateByUrl("/inscription");
         } else {
           this.router.navigateByUrl('/dashboard');
         }
+      }
+    } else {
+      this.message = "les champs sont obligatoires";
+    }
+   
+
+   
+    
     // this.serviceAlbum.submiteFormConnexion(
     //   this.fomrConnect.value.nameOrEmail ?? '', 
     //   this.fomrConnect.value.password ?? ''

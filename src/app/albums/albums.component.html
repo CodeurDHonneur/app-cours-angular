@@ -1,11 +1,8 @@
 <div class="flex flex-wrap gap-4 justify-center space-y-4">
     <!-- Albums details-->
-    <app-album-details [album]="album" (playToPlay)="playParent($event)"></app-album-details>
+    <app-album-details [album]="album" (playToPlay)="playParent($event)" (pauseSong)="pauseAlbum($event)"></app-album-details>
     
     <div class="space-y-4">
-  
-
-    
     <!-- Search-->
         <app-search (sendName)="valeurDeRecherche($event)"></app-search>
         

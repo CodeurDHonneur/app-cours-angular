@@ -36,6 +36,10 @@ export class AlbumsComponent implements OnInit {
     this.albumService.switchOn(event)
   }
 
+  pauseAlbum(event: Album){
+    this.albumService.switchOff(event);
+  }
+
   valeurDeRecherche(valeurEmit: string): Album[]{
     return this.albums = this.albumService.getResultatRecherche(valeurEmit);
   }

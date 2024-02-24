@@ -16,6 +16,8 @@ import { NotificationAucunResultatComponent } from './notification-aucun-resulta
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
     SearchComponent,
     NotificationAucunResultatComponent,
     InscriptionComponent,
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -43,4 +46,6 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

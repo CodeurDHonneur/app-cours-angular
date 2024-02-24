@@ -1,13 +1,16 @@
-<div *ngIf="album" class="max-w-[300px] p-6 bg-white shadow-lg rounded-lg mt-3 h-[850px] space-y-5 md:sticky md:top-2">
+<div *ngIf="album" class="w-[300px] p-6 bg-white shadow-lg rounded-lg mt-3  container space-y-5 md:sticky md:top-2">
     
     <div>
         <img src="../../assets/img/img-zik/{{album.url}}" class="rounded-lg">
-        <h3 class="font-bold">{{album.title}}</h3>
+        <h3 class="font-bold">{{album.title | uppercase}}</h3>
     </div>
-   
+ 
     <p>Ref : <span class="italic text-lg">{{album.ref}}</span></p>
-    <p class="border px-4 py-2 rounded-lg bg-blue-950 max-w-24 text-white flex items-center gap-2 hover:bg-blue-700" (click)="play(album)">Play 
+    <p class="border px-4 py-2 rounded-lg bg-blue-950 max-w-24 text-white flex items-center gap-2 hover:bg-blue-700" (click)="play(album)" *ngIf="album.status == 'off'" >Play 
         <mat-icon>play_circle</mat-icon>
+    </p>
+    <p class="border px-2 py-2 rounded-lg bg-blue-950 max-w-24 text-white flex items-center gap-2 hover:bg-blue-700" (click)="pause(album)" *ngIf="album.status != 'off'">Pause 
+        <mat-icon>pause_circle</mat-icon>
     </p>
     <div class="pb-3">
         <p class="bg-blue-700 text-emerald-200 text-1xl rounded-lg px-4 py-2 mb-3" *ngIf="album.tags">Chansons</p>

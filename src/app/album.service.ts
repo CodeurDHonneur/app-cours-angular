@@ -52,6 +52,11 @@ export class AlbumService {
 
 
   getResultatRecherche(value: string): Album[]{
+    // const albums: Album[];
+    // return this.getalbums().subscribe(albums => {
+      
+    // })
+    const infos = this.getalbums()
     return this.albums.filter(item => item?.title.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
   }
   // paginate(start: number, end: number): Album[]{

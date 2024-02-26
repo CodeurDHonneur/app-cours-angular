@@ -7,17 +7,18 @@
             <ul class="flex gap-4 flex-wrap ">
                 <li><a class="px-4 py-2 border text-white hover:bg-black hover:text-white rounded-md"  routerLink="/" routerLinkActive="active">Accueil</a></li>
                 <li><a class="px-4 py-2 border text-white hover:bg-black hover:text-white rounded-md" routerLink="connexion"  routerLinkActive="active">Connexion</a></li>
+                <li><a class="px-4 py-2 border text-white hover:bg-black hover:text-white rounded-md" routerLink="inscription"  routerLinkActive="active">Inscription</a></li>
             </ul>
         </nav>
     </div>
-    <div class="flex  gap-2 flex-wrap">
+    <div class="flex  gap-2 flex-col">
         <div class="flex gap-1">
             <p class="text-white" >Nom d'utilisateur</p>
         </div>
-        <p class="text-white">Timer</p>
+        <p class="text-white">{{time}}</p>
     </div>
 </div>
-<div>
+<!-- <div>
     <mat-icon>
         search
     </mat-icon>
@@ -28,4 +29,4 @@
     toggle
 </button>
 
-<div [@openclose]="isOpen ? 'open' : 'closed'">Box is {{isOpen ? 'open' : 'closed'}}</div>
+<div [@openclose]="isOpen ? 'open' : 'closed'">Box is {{isOpen ? 'open' : 'closed'}}</div> -->

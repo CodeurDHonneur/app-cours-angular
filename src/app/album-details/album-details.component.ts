@@ -10,7 +10,12 @@ import { AlbumService } from '../album.service';
 
 export class AlbumDetailsComponent implements OnInit {
 @Input() album?: Album;
-@Output() playToPlay: EventEmitter<string> = new EventEmitter();
+@Output() playToPlay: EventEmitter<Album> = new EventEmitter();
+@Output() pauseSong: EventEmitter<Album> = new EventEmitter();
+
+showplayer: boolean = false;
+
+
 
 constructor(private serviceAlbum: AlbumService){}
 
@@ -18,7 +23,11 @@ ngOnInit(): void {
  
 }
 
-play(value : string){
+play(value : Album){
   this.playToPlay.emit(value);
+  this.showplayer = true;
+}
+pause(value: Album){
+this.pauseSong.emit(value);
 }
 }

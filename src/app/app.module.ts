@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationAucunResultatComponent } from './notification-aucun-resultat/notification-aucun-resultat.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DescriptionComponent,
     SearchComponent,
     NotificationAucunResultatComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AudioPlayerComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
